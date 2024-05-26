@@ -12,7 +12,7 @@ function App() {
     return savedContacts ? JSON.parse(savedContacts) : contacts;
   });
 
-  const searchResult = contacts.filter(contact =>
+  const searchResult = newContactList.filter(contact =>
     contact.name.toLowerCase().includes(searchdata.toLowerCase())
   );
 
@@ -31,13 +31,14 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem('contactList', JSON.stringify(newContactList));
   }, [newContactList]);
+  console.log(newContactList);
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={searchdata} onChange={setSearchdata} />
-      <ContactList contacts={newContactList} onContactDelete={deleteContact} />
+      <ContactList contacts={searchResult} onContactDelete={deleteContact} />
     </div>
   );
 }
