@@ -31,7 +31,6 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem('contactList', JSON.stringify(newContactList));
   }, [newContactList]);
-  console.log(newContactList);
 
   return (
     <div>
